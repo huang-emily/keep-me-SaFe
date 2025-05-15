@@ -22,6 +22,7 @@ import urllib.parse
 import urllib.request
 
 GMAPS_URL = "https://maps.googleapis.com/maps/api/geocode/json"
+# this key is no longer in service, replace with your own API key
 API_KEY = "AIzaSyBuwNDmruO9bGSWYT-sQ471u1z3rr5R2KE"
 model = joblib.load('static/xgboost.pkl')
 model_columns = joblib.load('static/xgboost_columns.pkl')
