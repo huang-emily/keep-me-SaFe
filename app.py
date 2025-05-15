@@ -45,7 +45,11 @@ col_severe = ['Fatal', 'Injury (Severe)', 'Injury (Other Visible)',
 def get_coord(address, country):
     # Join the parts of the URL together into one string.
     params = urllib.parse.urlencode(
-        {"address": f"{address.replace(" ", "+")}", "country": country, "key": API_KEY,}
+        {
+            "address": f"{address.replace(' ', '+')}", 
+            "country": country, 
+            "key": API_KEY
+        }
     )
 
     search_url = f"{GMAPS_URL}?{params}"
