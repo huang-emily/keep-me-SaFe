@@ -17,13 +17,12 @@ import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
 
-import urllib.error
 import urllib.parse
 import urllib.request
 
 GMAPS_URL = "https://maps.googleapis.com/maps/api/geocode/json"
 # this key is no longer in service, replace with your own API key
-API_KEY = "AIzaSyBuwNDmruO9bGSWYT-sQ471u1z3rr5R2KE"
+API_KEY = "AIzaSyBTqMDE9lstyEGEY75lHg6LgyVOw0vmao0"
 model = joblib.load('static/xgboost.pkl')
 model_columns = joblib.load('static/xgboost_columns.pkl')
 accident_data = pd.read_csv('static/data/accidents_only.csv')
