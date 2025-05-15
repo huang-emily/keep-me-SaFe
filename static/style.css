@@ -1,0 +1,408 @@
+/* OVERALL WEBSITE */
+html body {
+    font-family: 'Poppins', serif;
+}
+
+/* NAVIGVATION BAR */
+nav {
+    background-color: #fff;
+    position: absolute;
+}
+
+nav #logo {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+    margin-left: 25px;
+}
+
+nav a:link,
+nav a:visited {
+    color: #000;
+}
+
+nav a:hover,
+nav a:active {
+    color: #0101c5;
+}
+
+/* INDEX PAGE */
+
+/* OVERALL FORMATTING */
+h1 {
+    color: #000000;
+    font-family: 'Merriweather' 'sans-serif';
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+h2 {
+    color: #000000;
+    font-family: 'Merriweather' 'sans-serif';
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+h3 {
+    color: #0101c5;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1em;
+    line-height: 2em;
+    color: #C3C3C3;
+}
+
+#blue-line {
+    width: 50px;
+    height: 2px;
+    background-color: #0101c5;
+    margin: 3% 0%;
+}
+
+/* HOME FORMATTING */
+#home-page {
+    margin-top: 10%;
+}
+
+#home-page #intro-text,
+#home-page #motive-text,
+#home-page #resources-text {
+    margin: auto;
+}
+
+#home-page #intro,
+#home-page #motivation,
+#home-page #resources,
+#home-page #team {
+    margin: 5% auto;
+    padding-top: 70px;
+}
+
+/* TEAM TEXT FOR CENTERING IN THE MIDDLE */
+#home-page #team-text {
+    text-align: center;
+    margin-bottom: 2.5%;
+}
+
+/* BLUE LINE FOR TEAM TEXT SPECIFICALLY */
+#home-page #team-text #blue-line {
+    margin: 1% auto;
+}
+
+/* RESOURCE LINKS DISPLAY */
+#home-page #resource-links div {
+    margin: 2.5% 0%;
+    text-align: center;
+}
+
+#home-page #resource-links ul,
+#home-page #resource-links a {
+    padding: 0;
+    text-decoration: none;
+}
+
+#home-page #resource-links a:hover,
+#home-page #resource-links a:active {
+    color: #0101c5;
+    text-decoration: none;
+}
+
+#home-page #resource-links ul li {
+    list-style-type: none;
+    font-size: 1.25em;
+}
+
+#home-page #resource-links h4 {
+    font-size: 2em;
+}
+
+/* TEAM MEMBER FORMATTING */
+#home-page #team-members {
+    text-align: center;
+}
+
+#home-page #team-members a {
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#home-page #team-members a:link,
+#home-page #team-members a:visited {
+    color: #000;
+}
+
+#home-page #team-members a:hover,
+#home-page #team-members a:active {
+    color: #0101c5;
+    text-decoration: none;
+}
+
+#home-page #team-members #member-pic {
+    margin: auto;
+}
+
+#home-page #team-members ul {
+    padding: 0;
+}
+
+#home-page #team-members ul li {
+    list-style-type: none;
+}
+
+/* VISUALIZEEEEE */
+#visualize-page,
+#predict-page {
+    margin: 8% auto 5% auto;
+}
+
+#visualize-page #viz-header,
+#predict-page #predict-header {
+    text-align: center;
+}
+
+#visualize-page #viz-header h1,
+#predict-page #predict-header h1 {
+    margin: 0% auto;
+}
+
+#visualize-page #viz-header #blue-line,
+#predict-page #predict-header #blue-line {
+    margin: 1% auto;
+}
+
+#visualize-page #viz-header p,
+#predict-page #predict-header p {
+    margin-top: 0%;
+}
+
+#visualize-page #filtering {
+    padding: 2%;
+    margin-top: 0;
+}
+
+#visualize-page #filter-header {
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+#visualize-page #filtering .input-group {
+    margin: 1%;
+}
+
+#visualize-page #collapseHour,
+#visualize-page #collapseMonth {
+    padding: 1%;
+}
+
+#visualize-page #collapseDOW {
+    padding: 2%;
+}
+
+#visualize-page #collapseYear,
+#visualize-page #collapseSev {
+    padding: 3%;
+}
+
+#visualize-page #viz-button {
+    margin: 3% auto;
+}
+
+/* PREDICTING */
+#predict-page #user-info {
+    box-sizing: border-box;
+    padding: 2rem 2rem 1rem;
+    margin-top: 0rem;
+}
+
+#user-input
+{
+    margin-bottom: .5rem;
+}
+
+#predict-page #predict-header {
+    text-align: center;
+}
+
+#predict-page h2
+{
+    margin: 0 auto .5rem auto;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#predict-page .predict-instructions
+{
+    line-height: normal;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    font-size: .9rem;
+    text-align: center;
+}
+
+.route-submission
+{
+    margin-top: .75rem;
+}
+
+#predict-page .datetime-input p,
+#predict-page #relay-information p {
+    color: #000;
+    font-weight: bold;
+}
+
+#predict-page #current-time p,
+#predict-page #current-date p {
+    display: inline;
+    margin-bottom: 0;
+}
+
+#predict-page .datetime-input .form-check
+{
+    margin-bottom: 0 !important;
+}
+
+#predict-page .datetime-input .form-check input
+{
+    margin-top: .5rem;
+}
+
+#predict-page #return-coord {
+    display: block;
+}
+
+#user-info button
+{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input-group-prepend
+{
+    width: 35%;
+}
+
+#predict-page div#current-time 
+{
+    margin-bottom: 0 !important;
+}
+
+.current-datetime,
+.set-datetime
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#current-time,
+#current-date,
+.time-dropdown,
+.pick-time,
+.date-dropdown,
+.pick-date
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.time-dropdown p,
+.date-dropdown p
+{
+    margin-right: .25rem;
+}
+
+.pick-time,
+.pick-date
+{
+    height: 2rem;
+}
+
+.user-time,
+.user-date
+{
+    margin-top: .25rem;
+    margin-left: .25rem;
+}
+
+#relay-information
+{
+    text-align: center;
+    width: 95%;
+    margin: auto;
+}
+
+.form-check
+{
+    margin-bottom: 1rem;
+}
+
+/*  FOOTERRRR */
+footer {
+    font-size: 0.75em;
+    text-align: center;
+    margin-bottom: .75%;
+    color: #C3C3C3;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 991px) {
+
+    #visualize-page,
+    #predict-page {
+        padding-top: 10vh !important;
+    }
+
+    #home-page #intro,
+    #home-page #motivation,
+    #home-page #resources,
+    #home-page #team {
+        padding-top: 15vh !important;
+    }
+
+    #user-info
+    {
+        margin-bottom: 1rem;
+    }
+
+    .current-datetime,
+    .set-datetime
+    {
+        flex-direction: row;
+    }
+
+    #current-time,
+    .pick-time
+    {
+        width: 50%;
+    }
+
+    #chart
+    {
+        padding: 0;
+    }
+}
+
+@media (max-width: 507px) {
+    #predict-page h1 {
+        padding-bottom: 2.5%;
+    }
+}
+
+@media (min-width: 508px) {
+    #viz-section {
+        min-height: 85vh;
+    }
+}
+
+@media (min-width: 992px) {
+    #predict-section {
+        min-height: 85vh;
+    }
+}

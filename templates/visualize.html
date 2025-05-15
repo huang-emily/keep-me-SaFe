@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+
+{% block title %}Visualize{% endblock %}
+
+{% block head_script %}
+<script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+<script>
+    async function filter_viz() {
+        // set all the variables
+        let hour = [];
+        const hour_btns = document.querySelectorAll('input[name="hour-select"]');
+        for (let i = 0; i < Number('{{hour_len}}'); i++){
+            var curr = document.getElementById('hour-select-'.concat(i.toString())).value;
+            if(hour_btns[i].checked){
+                hour.push(curr);
+            }
+        }
+
+        let dow = [];
+        let flask_dow = '{{dow_list}}'.slice(6,-6).split('&#39;, &#39;');
+        const dow_btns = document.querySelectorAll('input[name="dow-select"]');
+        for (let i = 0; i < Number('{{dow_len}}'); i++){
+            var curr = document.getElementById('dow-select-'.concat(flask_dow[i])).value;
+            if(dow_btns[i].checked){
+                dow.push(curr);
+            }
+        }
+
+        let month = [];
+        let flask_month = '{{month_list}}'.slice(6,-6).split('&#39;, &#39;');
+        const month_btns = document.querySelectorAll('input[name="month-select"]');
+        for (let i = 0; i < Number('{{month_len}}'); i++){
+            var curr = document.getElementById('month-select-'.concat(flask_month[i])).value;
+            if(month_btns[i].checked){
+                month.push(curr);
+            }
+        }
+
+        let year = [];
+        const year_btns = document.querySelectorAll('input[name="year-select"]');
+        for (let i = 0; i < Number('{{year_len}}'); i++){
+            var curr = document.getElementById('year-select-'.concat((i + 2012).toString())).value;
+            if(year_btns[i].checked){
+                year.push(curr);
+            }
+        }
+
+        let severe = [];
+        let flask_severe = '{{severe_list}}'.slice(6,-6).split('&#39;, &#39;');
+        const severe_btns = document.querySelectorAll('input[name="severe-select"]');
+        for (let i = 0; i < Number('{{severe_len}}'); i++){
+            var curr = flask_severe[i];
+            if(severe_btns[i].checked){
+                severe.push(curr);
+            }
+        }
+
+        // fetch the link related to the cb_viz which calls the flask function
+        let response = await fetch(`/cb_viz/getAccidents?hour=${hour}&dow=${dow}&month=${month}&year=${year}&severe=${severe}`);
+
+        // if the call is sucessful
+        if (response.ok) {
+            let chartJson = await response.json();
+            if (response.ok) {
+                plot_graph = document.getElementById('chart');
+                Plotly.newPlot(plot_graph, chartJson.data, chartJson.layout);
+            } else { 
+                    alert(`HTTP-Error: ${response.status} on getResponse for Visualize`);
+                }
+        } else {
+            alert(`HTTP-Error: ${response.status} on getRoute`);
+        }
+    } 
+
+    window.onload = function() {
+        filter_viz();
+    };
+
+    // these variables before the resize function hopefully stops multiple reloads
+    var res;
+    window.onresize = function() {
+        // if (res){clearTimeout(res)};
+        // res = setTimeout(get_address,100);
+
+        if (res){clearTimeout(res)};
+        res = setTimeout(filter_viz,50);
+    }
+</script>
+
+{% endblock %}
+
+{% block content %}
+<div id="visualize-page">
+    <div class="row g-3 align-self-center" id="viz-header">
+        <h3>Visualize the data</h3>
+        <h1>Explore the data on your own!</h1>
+        <div id="blue-line"></div>
+        <p>Curious about the data we've used for our ML model? With the chart provided below, you can 
+            look through the traffic accident data from Jan 2012 until Dec 2022.</p>
+    </div>
+
+    <div class="row g-3" id="viz-section">
+        <div class="card col-lg-4 flex-grow-1" id="filtering">
+            <div class="d-lg-inline" id="filter-header">
+                <h5>Choose how you view the data</h5>
+            </div>
+
+            <div class="accordion" id="filter-options">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="hour-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHour" aria-expanded="true" aria-controls="collapseHour">
+                            Filter by Hour
+                        </button>
+                    </h2>
+                    <div id="collapseHour" class="accordion-collapse collapse show" aria-labelledby="hour-header" data-bs-parent="#filter-options">
+                        <div class="input-group" id="hour-select">
+                            {% for i in range(hour_len) %}
+                                <div class="form-check form-check-inline col-lg-1 col-md-1 col-sm-1 col-1">
+                                    <input class="form-check-input" type="checkbox" id="hour-select-{{hour_list[i]}}" name='hour-select' value={{hour_list[i]}} checked>
+                                    <label class="form-check-label" for="hour-select-{{hour_list[i]}}">{{hour_list[i]}}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="dow-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDOW" aria-expanded="false" aria-controls="collapseDOW">
+                            Filter by Day of Week
+                        </button>
+                    </h2>
+                    <div id="collapseDOW" class="accordion-collapse collapse" aria-labelledby="dow-header" data-bs-parent="#filter-options">
+                        <div class="input-group" id="dow-select">
+                            {% for i in range(dow_len) %}
+                                <div class="form-check form-check-inline col-lg-4 col-md-2 col-sm-3 col-4">
+                                    <input class="form-check-input" type="checkbox" id="dow-select-{{dow_list[i]}}" name='dow-select' value={{dow_list[i]}} checked>
+                                    <label class="form-check-label" for="dow-select-{{dow_list[i]}}">{{dow_list[i]}}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="month-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMonth" aria-expanded="false" aria-controls="collapseMonth">
+                            Filter by Month
+                        </button>
+                    </h2>
+                    <div id="collapseMonth" class="accordion-collapse collapse" aria-labelledby="month-header" data-bs-parent="#filter-options">
+                        <div class="input-group" id="month-select">
+                            {% for i in range(month_len) %}
+                                <div class="form-check form-check-inline col-lg-3 col-md-2 col-sm-3 col-4">
+                                    <input class="form-check-input" type="checkbox" id="month-select-{{month_list[i]}}" name='month-select' value={{month_list[i]}} checked>
+                                    <label class="form-check-label" for="month-select-{{month_list[i]}}">{{month_list[i]}}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="year-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseYear" aria-expanded="false" aria-controls="collapseYear">
+                            Filter by Year
+                        </button>
+                    </h2>
+                    <div id="collapseYear" class="accordion-collapse collapse" aria-labelledby="year-header" data-bs-parent="#filter-options">
+                        <div class="input-group" id="year-select">
+                            {% for i in range(year_len) %}
+                                <div class="form-check form-check-inline col-lg-3 col-md-2 col-sm-2 col-4">
+                                    <input class="form-check-input" type="checkbox" id="year-select-{{year_list[i]}}" name='year-select' value={{year_list[i]}} checked>
+                                    <label class="form-check-label" for="year-select-{{year_list[i]}}">{{year_list[i]}}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="severe-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSev" aria-expanded="false" aria-controls="collapseSev">
+                            Filter by Collision Severity
+                        </button>
+                    </h2>
+                    <div id="collapseSev" class="accordion-collapse collapse" aria-labelledby="severe-header" data-bs-parent="#filter-options">
+                        <div class="input-group" id="severe-select">
+                            {% for i in range(severe_len) %}
+                                <div class="form-check form-check-inline d-block col-12">
+                                    <input class="form-check-input" type="checkbox" id="severe-select-{{i}}" name='severe-select' value={{severe_list[i]}} checked>
+                                    <label class="form-check-label" for="severe-select-{{i}}">{{severe_list[i]}}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="viz-button">
+                <button class="btn btn-primary mt-auto" type="button" onclick="filter_viz()">Map new!</button>
+            </div>
+        </div>
+
+        <div id="chart" class="container-fluid col-lg-8 col-12 chart"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body_script %}
+<script>filter_viz();</script>
+{% endblock %}
