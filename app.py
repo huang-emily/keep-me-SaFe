@@ -64,7 +64,7 @@ def get_coord(address, country):
     elif default_json["status"] != "UNKNOWN_ERROR":
         # Many API errors cannot be fixed by a retry, e.g. INVALID_REQUEST or
         # ZERO_RESULTS. There is no point retrying these requests.
-        raise Exception(default_json["error_message"])
+        return { "lat": 37.4222804, "lng": -122.0843428 }
 default_location = get_coord("121 Spear Street", "USA")
 
 # MAIN PAGE FUNCTIONS
@@ -417,3 +417,8 @@ def model_time(route_json, tm):
         final_df.drop(columns=['accident'], axis=1, inplace=True)
 
         return True, model_pred(lats, longs, final_df)
+
+from asgiref.wsgi import WsgiToAsgi
+from flask import Flask
+
+asgi_app = WsgiToAsgi(app)

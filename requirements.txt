@@ -7,4 +7,6 @@ joblib
 numpy
 pandas
 xgboost
-waitress
+python-dotenv
+hypercorn
+asgiref
