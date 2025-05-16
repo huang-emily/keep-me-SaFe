@@ -15,11 +15,11 @@ flask --app app.py run
 ``` 
 A link to the website should appear in your terminal.
 
-![Terminal Output](static\images\flask_output.png)
+![Terminal Output](./static/images/flask_output.png)
 
 Clicking the http://127.0.0.1:5000 links you to the website being locally hosted in your web browser.
 
-![Keep Me SaFe Homepage](static\images\website_homepage.png)
+![Keep Me SaFe Homepage](./static/images/website_homepage.png)
 
 ## Tools used
 
@@ -52,9 +52,9 @@ From there our website splits into three parts, a "Learning" page, a "Visualize"
 
 - The "Learning" page describes our motivation for the project, the resources we used to create the project, and the wonderful people who created the project.
 - The "Visualize" page visualizes the entirety of the cleaned data we used to train our model with. Users can see all the plots color-coded by collision severity and filter our data plotted based on the "Hour", "Day of Week", "Month", "Year" and "Collision Severity" of the data points. 
- ![Car Accidents plotted on a map](static\images\visualize_page.png)
+ ![Car Accidents plotted on a map](./static/images/visualize_page.png)
 - The "Predict" page plots the route a user inputs into the page and gives the number of accidents that are directly on the route. Accidents near the route will also be plotted for the user's awareness.
- ![Predict car Accidents on a user's route plotted on a map](static\images\predict_page.png)
+ ![Predict car Accidents on a user's route plotted on a map](./static/images/predict_page.png)
 
 ## Resources Used
 
