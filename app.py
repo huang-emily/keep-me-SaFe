@@ -65,7 +65,7 @@ def get_coord(address, country):
 default_location = get_coord("121 Spear Street", "USA")
 
 # MAIN PAGE FUNCTIONS
-@app.route('/')
+@app.route("/", methods=['GET'])
 def index():
     return render_template('index.html')
 
