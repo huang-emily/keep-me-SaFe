@@ -3,10 +3,9 @@ This repository contains the core files for my team's thesis project for UC Berk
 
 Our team decided to create a Flask web application that predicts potential accident hotspots in San Francisco for a user's given walking route which you can access here: [Keep Me SaFe](https://keep-me-safe.onrender.com/).
 
-**Note**: Render (an app deployment service) spins down instances when there isn't any activity for 15 minutes. Because of this, you may need to wait for the service to wake up and allow the website to load before refreshing. Maps may need some time even after the website has loaded.
+**IMPORTANT - You may need to refresh the website a couple of times to wake up the website. If the website looks broken or is missing images, keep refreshing until it matches the image below.** Graphs may also take time to load even after the website is active.
 
 If you want to run the project locally, you must create a `.env` file with the variable `API_KEY` set to your Google Maps API key. The file should live on the same directory as the `app.py` file. You must also install all python packages listed in the `requirements.txt` to make sure the application works as intended.
-
 
 After creating your file and installing the packages, you can simply run the following command in your terminal:
 
