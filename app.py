@@ -21,8 +21,8 @@ import urllib.parse
 import urllib.request
 
 GMAPS_URL = "https://maps.googleapis.com/maps/api/geocode/json"
-# this key is no longer in service, replace with your own API key
-API_KEY = "AIzaSyBTqMDE9lstyEGEY75lHg6LgyVOw0vmao0"
+# replace with your own API key
+#API_KEY = "______"
 model = joblib.load('static/xgboost.pkl')
 model_columns = joblib.load('static/xgboost_columns.pkl')
 accident_data = pd.read_csv('static/data/accidents_only.csv')
@@ -69,12 +69,8 @@ default_location = get_coord("121 Spear Street", "USA")
 def index():
     return render_template('index.html')
 
-if __name__ == "__main__":
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=10000)
-
 # VISUALIZATION FUNCTIONS 
-@app.route('/visualize')
+@app.route('/visualize', methods=['GET'])
 def visualize():
     return render_template('visualize.html', 
                            hour_len = len(hour), hour_list=hour,
@@ -152,7 +148,7 @@ def graph(hour, dow, month, year, severe):
 
 # demonstrate hover information
 
-@app.route('/predict')
+@app.route('/predict', methods=['GET'])
 def predict():
     return render_template('predict.html', 
                            min_len = len(minute), min_list = minute,
