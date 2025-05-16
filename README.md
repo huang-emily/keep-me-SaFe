@@ -3,11 +3,11 @@ This repository contains the core files for my team's thesis project for UC Berk
 
 Our team decided to create a Flask web application that predicts potential accident hotspots in San Francisco for a user's given walking route which you can access here: [Keep Me SaFe](https://keep-me-safe.onrender.com/).
 
-**IMPORTANT - If the website give a 502 gateway error, you may need to refresh the website a couple of times to wake up the website. If the website looks broken or is missing images, keep refreshing until it matches the image below.** Otherwise, please wait for the applicatino to load. Graphs may also take time to load even after the website is active.
+**IMPORTANT - If the website gives a 502 gateway error, you may need to refresh the website a couple of times to wake up the website. If the website looks broken or is missing images, keep refreshing until it matches the image below.** Otherwise, please wait for the application to load. Graphs may also take time to load even after the website is active.
 
 If you want to run the project locally, you must create a `.env` file with the variable `API_KEY` set to your Google Maps API key. The file should live on the same directory as the `app.py` file. You must also install all python packages listed in the `requirements.txt` to make sure the application works as intended.
 
-After creating your file and installing the packages, you can simply run the following command in your terminal:
+After creating the `.env` file and installing the packages, you can simply run the following command in your terminal:
 
 ```
 flask --app app.py run
@@ -16,7 +16,7 @@ A link to the website should appear in your terminal.
 
 ![Terminal Output](./static/images/flask_output.png)
 
-Clicking the http://127.0.0.1:5000 links you to the website being locally hosted in your web browser.
+Clicking the http://127.0.0.1:5000 wiil take you to the website being locally hosted in your preferred web browser.
 
 ![Keep Me SaFe Homepage](./static/images/website_homepage.png)
 
@@ -30,7 +30,7 @@ Clicking the http://127.0.0.1:5000 links you to the website being locally hosted
 ## Motivation
 In 2020, more than 6,700 pedestrians were killed while walking and using wheelchairs, despite a dramatic decrease in the number of cars on the road and the number of miles traveled. Because our team was split between those who relied on public transport versus those who relied on our own cars, we thought this was an intriguing topic to delve into in order to understand why this phenomenon was happening, especially since traffic collisions and deaths are preventable and often occur as a result of the way transportation in the United States has been designed – for the fast, uninterrupted movement of vehicles.
 
-Looking through tools that seeked to remedy this, we saw they weren't as approachable for users to learn more nor user-friendly to use on their phones if they were out already.Because of this, we wanted to see if there was a way to bring more awareness to pedestrians before they started their routes without making it an intimidating tool to use.
+**Looking through tools that seeked to remedy this, we saw they weren't as approachable for users to learn more nor user-friendly to use on their phones if they were out already.** Because of this, we wanted to see if there was a way to bring more awareness to pedestrians before they started their routes without making it an intimidating tool to use.
 
 ## Project Proposal
 
